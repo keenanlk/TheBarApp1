@@ -9,9 +9,10 @@
     tools:showIn="@layout/activity_main">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:text="The Bar App"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -21,14 +22,22 @@
         tools:text="The Bar App" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnBars"
         android:layout_width="148dp"
         android:layout_height="67dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginLeft="131dp"
+        android:layout_marginTop="323dp"
+        android:layout_marginEnd="132dp"
+        android:layout_marginRight="132dp"
+        android:layout_marginBottom="285dp"
         android:background="#58B4FF"
         android:text="VIEW BARS"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        tools:layout_editor_absoluteX="131dp"
-        tools:layout_editor_absoluteY="323dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

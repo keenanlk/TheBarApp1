@@ -1,5 +1,6 @@
 package com.example.thebarapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -11,6 +12,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     //test
@@ -27,6 +29,16 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        Button barsList = (Button)findViewById(R.id.btnBars);
+
+        barsList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent startIntent = new Intent(getApplicationContext(), BarsList.class);
+                startActivity(startIntent);
             }
         });
     }
@@ -53,3 +65,8 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
+//note
+//in Bars List screen, show list of bars. When user clicks on bar, they can read review from it
+//(pulls review from server
+//User can also write a review on it, (sends review to server)
