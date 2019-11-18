@@ -9,8 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WriteReview"></activity>
-        <activity android:name=".HerdAndHorns" />
+        <activity android:name=".HerdAndHorns"></activity>
         <activity android:name=".SportsBar" />
         <activity android:name=".OldBroadway" />
         <activity android:name=".BarsList" />
