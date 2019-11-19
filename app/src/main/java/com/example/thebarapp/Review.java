@@ -2,21 +2,22 @@ package com.example.thebarapp;
 
 public class Review {
     int id;
-    int barID;
-    int rating;
-    String drink;
-    String food;
-    String atmosphere;
-    String overall;
 
-    public void Review(int id, int barID, int rating, String drink, String food, String atmosphere, String overall){
-        setId(id);
-        setBarID(barID);
-        setRating(rating);
-        setDrink(drink);
-        setFood(food);
-        setAtmosphere(atmosphere);
-        setOverall(overall);
+
+
+    int barID;
+    int food;
+    int drink;
+    int atmosphere;
+    String comment;
+
+    public void Review(int id, int barID, int food, int drink, int atmosphere, String comment){
+        this.barID = getBarID();
+        this.id = getId();
+        this.food = getFood();
+        this.drink = getDrink();
+        this.atmosphere = getAtmosphere();
+        this.comment = getComment();
     }
 
     public int getId() {
@@ -35,43 +36,37 @@ public class Review {
         this.barID = barID;
     }
 
-    public int getRating() {
-        return rating;
-    }
-
-    public void setRating(int rating) {
-        this.rating = rating;
-    }
-
-    public String getDrink() {
-        return drink;
-    }
-
-    public void setDrink(String drink) {
-        this.drink = drink;
-    }
-
-    public String getFood() {
+    public int getFood() {
         return food;
     }
 
-    public void setFood(String food) {
+    public void setFood(int food) {
         this.food = food;
     }
 
-    public String getAtmosphere() {
+    public int getDrink() {
+        return drink;
+    }
+
+    public void setDrink(int drink) {
+        this.drink = drink;
+    }
+
+    public int getAtmosphere() {
         return atmosphere;
     }
 
-    public void setAtmosphere(String atmosphere) {
+    public void setAtmosphere(int atmosphere) {
         this.atmosphere = atmosphere;
     }
 
-    public String getOverall() {
-        return overall;
+    public String getComment() {
+        return comment;
     }
 
-    public void setOverall(String overall) {
-        this.overall = overall;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
+
+
 }
