@@ -1,39 +1,21 @@
 package com.example.thebarapp;
 
+
 public class Review {
-    int id;
 
-
-
-    int barID;
     int food;
     int drink;
     int atmosphere;
     String comment;
 
-    public void Review(int id, int barID, int food, int drink, int atmosphere, String comment){
-        this.barID = getBarID();
-        this.id = getId();
-        this.food = getFood();
-        this.drink = getDrink();
-        this.atmosphere = getAtmosphere();
-        this.comment = getComment();
+    public void Review(int food, String comment, int drink, int atmosphere){
+        this.food = food;
+        this.drink = drink;
+        this.atmosphere = atmosphere;
+        this.comment = comment;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getBarID() {
-        return barID;
-    }
-
-    public void setBarID(int barID) {
-        this.barID = barID;
+    public Review() {
     }
 
     public int getFood() {
