@@ -47,7 +47,7 @@
                 android:textStyle="bold" />
 
             <RatingBar
-                android:id="@+id/ratingBar8"
+                android:id="@+id/overallRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -64,7 +64,7 @@
                 android:textSize="30sp" />
 
             <RatingBar
-                android:id="@+id/ratingBar5"
+                android:id="@+id/drinkRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -81,7 +81,7 @@
                 android:textSize="30sp" />
 
             <RatingBar
-                android:id="@+id/ratingBar6"
+                android:id="@+id/foodRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -98,7 +98,7 @@
                 android:textSize="30sp" />
 
             <RatingBar
-                android:id="@+id/ratingBar7"
+                android:id="@+id/atmosphereRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -113,23 +113,13 @@
                 android:layout_gravity="center"
                 android:text="Write a review" />
 
-            <ListView
-                android:id="@+id/comment_list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:listitem="@android:layout/test_list_item" />
-
             <TextView
                 android:id="@+id/commentTxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/action_settings"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:paddingLeft="12dp"
+                android:text="testing"
                 android:textSize="24sp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview_reviews"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
 
         </LinearLayout>
     </ScrollView>

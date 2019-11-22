@@ -45,15 +45,16 @@ public class ReviewActivity extends AppCompatActivity {
     }
 
     public void saveRating(View v){
-        int food = foodRate.getNumStars();
-        int drink = drinksRate.getNumStars();
-        int atmosphere = atmosphereRate.getNumStars();
+        int food = (int)foodRate.getRating();
+        int drink = (int)drinksRate.getRating();
+        int atmosphere = (int)atmosphereRate.getRating();
         String commentIn = comment.getText().toString();
 
         Map<String, Object> review = new HashMap<>();
         review.put(KEY_ATMOSPHERE, atmosphere);
-        review.put(KEY_DRINK, drink);
         review.put(KEY_COMMENT, commentIn);
+        review.put(KEY_DRINK, drink);
+
         review.put(KEY_FOOD, food);
 
         db.collection("bars").document("1").collection("review").document().set(review)

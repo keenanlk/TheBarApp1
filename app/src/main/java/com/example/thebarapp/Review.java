@@ -1,14 +1,17 @@
 package com.example.thebarapp;
 
 
+import com.google.firebase.firestore.Exclude;
+
 public class Review {
 
     int food;
     int drink;
     int atmosphere;
     String comment;
+    String documentId;
 
-    public void Review(int food, String comment, int drink, int atmosphere){
+    public Review(int food,String comment, int drink, int atmosphere ) {
         this.food = food;
         this.drink = drink;
         this.atmosphere = atmosphere;
@@ -17,38 +20,37 @@ public class Review {
 
     public Review() {
     }
+    @Exclude
+    public String getDocumentId(){
+        return documentId;
+    }
+    public void setDocumentId(String documentId){
+        this.documentId = documentId;
+    }
 
     public int getFood() {
         return food;
     }
 
-    public void setFood(int food) {
-        this.food = food;
-    }
+
 
     public int getDrink() {
         return drink;
     }
 
-    public void setDrink(int drink) {
-        this.drink = drink;
-    }
+
 
     public int getAtmosphere() {
         return atmosphere;
     }
 
-    public void setAtmosphere(int atmosphere) {
-        this.atmosphere = atmosphere;
-    }
+
 
     public String getComment() {
         return comment;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+
 
 
 }

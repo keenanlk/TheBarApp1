@@ -48,7 +48,7 @@
                 android:textStyle="bold" />
 
             <RatingBar
-                android:id="@+id/ratingBar8"
+                android:id="@+id/overallRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -65,7 +65,7 @@
                 android:textSize="30sp" />
 
             <RatingBar
-                android:id="@+id/ratingBar5"
+                android:id="@+id/drinkRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -82,7 +82,7 @@
                 android:textSize="30sp" />
 
             <RatingBar
-                android:id="@+id/ratingBar6"
+                android:id="@+id/foodRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -99,7 +99,7 @@
                 android:textSize="30sp" />
 
             <RatingBar
-                android:id="@+id/ratingBar7"
+                android:id="@+id/atmosphereRate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
