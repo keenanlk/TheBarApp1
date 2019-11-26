@@ -3,6 +3,7 @@ package com.example.thebarapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,6 +26,7 @@ public class ReviewActivity extends AppCompatActivity {
     private static final String KEY_ATMOSPHERE = "atmosphere";
     private static final String KEY_COMMENT = "comment";
 
+    private int barID;
     private RatingBar foodRate;
     private RatingBar drinksRate;
     private RatingBar atmosphereRate;
@@ -37,6 +39,9 @@ public class ReviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
+
+        Intent intent = getIntent();
+        barID = intent.getExtras().getInt("barID");
 
         foodRate = findViewById(R.id.foodRate);
         drinksRate = findViewById(R.id.drinkRate);
