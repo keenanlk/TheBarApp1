@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,6 +34,11 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import com.android.volley.*;
+import org.json.*;
+import com.android.volley.toolbox.*;
+import com.google.gson.JsonIOException;
+
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -40,8 +46,8 @@ import java.util.List;
 
 public class OldBroadway extends AppCompatActivity {
     private TextView textData;
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private CollectionReference reviewRef = db.collection("bars/1/reviews");
+    //private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    //private CollectionReference reviewRef = db.collection("bars/1/reviews");
     private static final String TAG = "OldBroadway";
     private RatingBar foodRate;
     private RatingBar drinksRate;
@@ -62,45 +68,95 @@ public class OldBroadway extends AppCompatActivity {
         Button reviewBtn = (Button)findViewById(R.id.button4);
 
         reviewBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
+
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), ReviewActivity.class);
                 startActivity(startIntent);
             }
         });
-        db.collection("bars").document("1").collection("review")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        String comment = "";
-                        String data = "";
-                        int food=0;
-                        int drink=0;
-                        int atm=0;
-                        int overall=0;
-                        int x=0;
-                        if (task.isSuccessful()) {
 
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
-                                comment = document.getString("comment");
-                                data += "Comment: " + comment + "\n\n";
-                                food += document.getLong("food").intValue();
-                                drink+= document.getLong("drinks").intValue();
-                                atm += document.getLong("atmosphere").intValue();
-                                x++;
+        String url = "http://ndsucsci415.herokuapp.com/api/reviews/?Bar=The+Old+Broadway";
+
+        //Craft the request we send to the backend
+        JsonArrayRequest jsonObjectRequest = new JsonArrayRequest
+                (url, new Response.Listener<JSONArray>() {
+                    // This is where the logic goes for after you recieve a response
+                    public void onResponse(JSONArray response) {
+                        float overallRating = 0;
+                        float drinksRating = 0;
+                        float foodRating = 0;
+                        float atmosphereRating = 0;
+
+                        // Loop through arrays and calculate
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+                                JSONObject row = response.getJSONObject(i);
+                                //Sum up stars for each review
+                                drinksRating += row.getInt("Drinks");
+                                foodRating += row.getInt("Food");
+                                atmosphereRating += row.getInt("Atmosphere");
                             }
-                        } else {
-                            Log.w(TAG, "Error getting documents.", task.getException());
+                            catch (JSONException e){}
                         }
-                        textData.setText(data);
-                        foodRate.setRating(food/x);
-                        drinksRate.setRating(drink/x);
-                        atmosphereRate.setRating(atm/x);
-                        overallRate.setRating((food + drink + atm)/x/3);
+                        //Divide by total number of reviews to get average
+                        drinksRating = drinksRating / response.length();
+                        foodRating = foodRating / response.length();
+                        atmosphereRating = atmosphereRating / response.length();
+                        overallRating = (drinksRating + foodRating + atmosphereRating)/3;
+
+                        // Set the stars
+                        foodRate.setRating(foodRating);
+                        drinksRate.setRating(drinksRating);
+                        atmosphereRate.setRating(atmosphereRating);
+                        overallRate.setRating(overallRating);
+                    }
+                    //Make sure backend doesn't throw errors
+                }, new Response.ErrorListener() {
+                    public void onErrorResponse(VolleyError error) {
+                        // TODO: Handle error
+                        Log.e("GetRequest", error.toString());
                     }
                 });
+
+        //Sends out the actual request
+        VolleySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
+
+
+
+
+//        db.collection("bars").document("1").collection("review")
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        String comment = "";
+//                        String data = "";
+//                        int food=0;
+//                        int drink=0;
+//                        int atm=0;
+//                        int overall=0;
+//                        int x=0;
+//                        if (task.isSuccessful()) {
+//
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                                Log.d(TAG, document.getId() + " => " + document.getData());
+//                                comment = document.getString("comment");
+//                                data += "Comment: " + comment + "\n\n";
+//                                food += document.getLong("food").intValue();
+//                                drink+= document.getLong("drinks").intValue();
+//                                atm += document.getLong("atmosphere").intValue();
+//                                x++;
+//                            }
+//                        } else {
+//                            Log.w(TAG, "Error getting documents.", task.getException());
+//                        }
+//                        textData.setText(data);
+//                        foodRate.setRating(food/x);
+//                        drinksRate.setRating(drink/x);
+//                        atmosphereRate.setRating(atm/x);
+//                        overallRate.setRating((food + drink + atm)/x/3);
+//                    }
+//                });
 
 
 
