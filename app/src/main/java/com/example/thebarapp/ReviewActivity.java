@@ -11,29 +11,36 @@ import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ReviewActivity extends AppCompatActivity {
     private static final String TAG = "ReviewActivity";
-    private static final String KEY_FOOD = "food";
-    private static final String KEY_DRINK = "drinks";
-    private static final String KEY_ATMOSPHERE = "atmosphere";
+    private static final String KEY_FOOD = "Food";
+    private static final String KEY_DRINK = "Drinks";
+    private static final String KEY_ATMOSPHERE = "Atmosphere";
     private static final String KEY_COMMENT = "comment";
 
-    private int barID;
+    private String barName;
     private RatingBar foodRate;
     private RatingBar drinksRate;
     private RatingBar atmosphereRate;
     private TextInputEditText comment;
     private Button submit;
 
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private String url = "http://ndsucsci415.herokuapp.com/api/reviews/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +48,7 @@ public class ReviewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_review);
 
         Intent intent = getIntent();
-        barID = intent.getExtras().getInt("barID");
+        barName = intent.getExtras().getString("barName");
 
         foodRate = findViewById(R.id.foodRate);
         drinksRate = findViewById(R.id.drinkRate);
@@ -55,26 +62,39 @@ public class ReviewActivity extends AppCompatActivity {
         int atmosphere = (int)atmosphereRate.getRating();
         String commentIn = comment.getText().toString();
 
-        Map<String, Object> review = new HashMap<>();
-        review.put(KEY_ATMOSPHERE, atmosphere);
-        review.put(KEY_COMMENT, commentIn);
-        review.put(KEY_DRINK, drink);
 
-        review.put(KEY_FOOD, food);
+        JSONObject review = new JSONObject();
 
-        db.collection("bars").document("1").collection("review").document().set(review)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Toast.makeText(ReviewActivity.this, "Succesful", Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(ReviewActivity.this, "Error!", Toast.LENGTH_SHORT).show();
-                        Log.d(TAG, e.toString());
-                    }
-                });
+        Toast.makeText( ReviewActivity.this , "Made it this far", Toast.LENGTH_SHORT).show();
+        try {
+            review.put("Bar", barName);
+            review.put(KEY_DRINK, drink);
+            review.put(KEY_FOOD, food);
+            review.put(KEY_ATMOSPHERE, atmosphere);
+            //review.put(KEY_COMMENT, commentIn);
+        }
+        catch (JSONException e) {
+            Toast.makeText( ReviewActivity.this , "fucked up in jsonbuilding", Toast.LENGTH_SHORT).show();
+        }
+
+
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest( url, review, new Response.Listener<org.json.JSONObject>() {
+            @Override
+            public void onResponse(org.json.JSONObject response) {
+                //Code for after review is sent
+
+
+
+            }
+        }
+        , new Response.ErrorListener() {
+            public void onErrorResponse(VolleyError error) {
+                // TODO: Handle error
+                Log.e("PostRequest", error.toString());
+            }
+        });
+
+        VolleySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
+
     }
 }
