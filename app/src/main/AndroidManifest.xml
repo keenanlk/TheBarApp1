@@ -9,12 +9,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
         <activity android:name=".ReviewActivity"></activity>
         <activity android:name=".HerdAndHorns" />
         <activity android:name=".SportsBar" />
         <activity android:name=".OldBroadway" />
         <activity android:name=".BarsList" />
+        <activity android:name="VolleySingleton"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
@@ -26,5 +28,6 @@
             </intent-filter>
         </activity>
     </application>
+
 
 </manifest>
