@@ -71,6 +71,8 @@ public class OldBroadway extends AppCompatActivity {
 
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), ReviewActivity.class);
+                //This is hardcoded bar name
+                startIntent.putExtra("barName", "The Old Broadway");
                 startActivity(startIntent);
             }
         });
