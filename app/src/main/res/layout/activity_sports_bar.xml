@@ -117,6 +117,13 @@
                 android:layout_gravity="center"
                 android:text="Write a review" />
 
+            <TextView
+                android:id="@+id/commentTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="commentText"
+                android:textSize="24sp" />
+
         </LinearLayout>
     </ScrollView>
 
