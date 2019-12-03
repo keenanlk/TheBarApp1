@@ -46,8 +46,6 @@ import java.util.List;
 
 public class OldBroadway extends AppCompatActivity {
     private TextView textData;
-    //private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    //private CollectionReference reviewRef = db.collection("bars/1/reviews");
     private static final String TAG = "OldBroadway";
     private RatingBar foodRate;
     private RatingBar drinksRate;
@@ -58,17 +56,18 @@ public class OldBroadway extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_old_broadway);
+
+        //Set variables
         textData = (TextView)findViewById(R.id.commentTxt);
         foodRate = findViewById(R.id.foodRate);
         drinksRate = findViewById(R.id.drinkRate);
         atmosphereRate = findViewById(R.id.atmosphereRate);
         overallRate = findViewById(R.id.overallRate);
 
-
         Button reviewBtn = (Button)findViewById(R.id.button4);
 
+        //Set up button press
         reviewBtn.setOnClickListener(new View.OnClickListener() {
-
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), ReviewActivity.class);
                 //This is hardcoded bar name
@@ -77,6 +76,7 @@ public class OldBroadway extends AppCompatActivity {
             }
         });
 
+        // DB url
         String url = "http://ndsucsci415.herokuapp.com/api/reviews/?Bar=The+Old+Broadway";
 
         //Craft the request we send to the backend
@@ -122,52 +122,5 @@ public class OldBroadway extends AppCompatActivity {
 
         //Sends out the actual request
         VolleySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
-
-
-
-
-//        db.collection("bars").document("1").collection("review")
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        String comment = "";
-//                        String data = "";
-//                        int food=0;
-//                        int drink=0;
-//                        int atm=0;
-//                        int overall=0;
-//                        int x=0;
-//                        if (task.isSuccessful()) {
-//
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                Log.d(TAG, document.getId() + " => " + document.getData());
-//                                comment = document.getString("comment");
-//                                data += "Comment: " + comment + "\n\n";
-//                                food += document.getLong("food").intValue();
-//                                drink+= document.getLong("drinks").intValue();
-//                                atm += document.getLong("atmosphere").intValue();
-//                                x++;
-//                            }
-//                        } else {
-//                            Log.w(TAG, "Error getting documents.", task.getException());
-//                        }
-//                        textData.setText(data);
-//                        foodRate.setRating(food/x);
-//                        drinksRate.setRating(drink/x);
-//                        atmosphereRate.setRating(atm/x);
-//                        overallRate.setRating((food + drink + atm)/x/3);
-//                    }
-//                });
-
-
-
-
     }
-
-
-
-
-
-
 }
