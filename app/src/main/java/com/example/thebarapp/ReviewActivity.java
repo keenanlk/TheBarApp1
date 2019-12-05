@@ -84,7 +84,6 @@ public class ReviewActivity extends AppCompatActivity {
                 //Code for after review is sent
 
 
-
             }
         }
         , new Response.ErrorListener() {
@@ -95,6 +94,24 @@ public class ReviewActivity extends AppCompatActivity {
         });
 
         VolleySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
+
+        if (barName.equals("The Old Broadway")){
+            Intent obIntent = new Intent(getApplicationContext(), OldBroadway.class);
+            startActivity(obIntent);
+        }
+        else if(barName.equals("Herd and Horns")){
+            Intent obIntent = new Intent(getApplicationContext(), HerdAndHorns.class);
+            startActivity(obIntent);
+        }
+        else if(barName.equals("Sports Bar")){
+            Intent obIntent = new Intent(getApplicationContext(), SportsBar.class);
+            startActivity(obIntent);
+        }
+
+
+
+
+
 
     }
 }
