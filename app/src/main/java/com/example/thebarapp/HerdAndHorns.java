@@ -22,7 +22,7 @@ import org.json.JSONObject;
 import java.util.List;
 
 public class HerdAndHorns extends AppCompatActivity {
-
+    //creating variables
     private RatingBar foodRate;
     private RatingBar drinksRate;
     private RatingBar atmosphereRate;
@@ -34,6 +34,7 @@ public class HerdAndHorns extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_herd_and_horns);
+        //initializing variables to respective xml attributes
         textData = (TextView)findViewById(R.id.commentTxt);
         textData.setText("Reviews:\n");
         foodRate = findViewById(R.id.foodRate);
@@ -42,7 +43,7 @@ public class HerdAndHorns extends AppCompatActivity {
         overallRate = findViewById(R.id.overallRate);
 
 
-
+        //Takes user to page to write a review on the bar
         Button reviewBtn = (Button)findViewById(R.id.button4);
 
         reviewBtn.setOnClickListener(new View.OnClickListener() {

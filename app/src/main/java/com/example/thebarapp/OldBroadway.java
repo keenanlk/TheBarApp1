@@ -47,6 +47,7 @@ import java.util.List;
 import io.opencensus.internal.StringUtils;
 
 public class OldBroadway extends AppCompatActivity {
+    //creating the variables
     private TextView textData;
     private static final String TAG = "OldBroadway";
     private RatingBar foodRate;
@@ -69,7 +70,7 @@ public class OldBroadway extends AppCompatActivity {
 
         Button reviewBtn = (Button)findViewById(R.id.button4);
 
-        //Set up button press
+        //Set up button press to write a review
         reviewBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), ReviewActivity.class);

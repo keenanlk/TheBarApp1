@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-
+        //show bars list
         Button barsList = (Button)findViewById(R.id.btnBars);
 
         barsList.setOnClickListener(new View.OnClickListener() {
@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Toast.makeText( MainActivity.this , "firebase connection success", Toast.LENGTH_SHORT).show();
     }
 
     @Override

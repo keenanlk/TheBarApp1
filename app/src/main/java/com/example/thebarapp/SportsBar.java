@@ -19,7 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class SportsBar extends AppCompatActivity {
-
+    //creating the variables
     private RatingBar foodRate;
     private RatingBar drinksRate;
     private RatingBar atmosphereRate;
@@ -30,6 +30,7 @@ public class SportsBar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sports_bar);
+        //initializing the variables
         textData = (TextView)findViewById(R.id.commentTxt);
         textData.setText("Reviews:\n");
         foodRate = findViewById(R.id.foodRate);
@@ -37,6 +38,7 @@ public class SportsBar extends AppCompatActivity {
         atmosphereRate = findViewById(R.id.atmosphereRate);
         overallRate = findViewById(R.id.overallRate);
 
+        //Button to write a review on the bar
         Button reviewBtn = (Button)findViewById(R.id.button4);
 
         reviewBtn.setOnClickListener(new View.OnClickListener() {

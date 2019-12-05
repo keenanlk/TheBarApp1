@@ -27,12 +27,14 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ReviewActivity extends AppCompatActivity {
+    //creating keys for the review
     private static final String TAG = "ReviewActivity";
     private static final String KEY_FOOD = "Food";
     private static final String KEY_DRINK = "Drinks";
     private static final String KEY_ATMOSPHERE = "Atmosphere";
     private static final String KEY_COMMENT = "comment";
 
+    //creating variables
     private String barName;
     private RatingBar foodRate;
     private RatingBar drinksRate;
@@ -47,22 +49,26 @@ public class ReviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
 
+        //passing in the name of the bar
         Intent intent = getIntent();
         barName = intent.getExtras().getString("barName");
 
+        //initializing the variables
         foodRate = findViewById(R.id.foodRate);
         drinksRate = findViewById(R.id.drinkRate);
         atmosphereRate = findViewById(R.id.atmosphereRate);
         comment = findViewById(R.id.commentEdit);
     }
 
+    //button to submit the rating
     public void saveRating(View v){
+        //getting the num stars for each category from the user
         int food = (int)foodRate.getRating();
         int drink = (int)drinksRate.getRating();
         int atmosphere = (int)atmosphereRate.getRating();
         String commentIn = comment.getText().toString();
 
-
+        //putting the review info into a json object to send to our database
         JSONObject review = new JSONObject();
 
         Toast.makeText( ReviewActivity.this , "Made it this far", Toast.LENGTH_SHORT).show();
@@ -74,6 +80,7 @@ public class ReviewActivity extends AppCompatActivity {
             //review.put(KEY_COMMENT, commentIn);
         }
         catch (JSONException e) {
+            //TODO lets make sure we dont send this code lmao
             Toast.makeText( ReviewActivity.this , "fucked up in jsonbuilding", Toast.LENGTH_SHORT).show();
         }
 
@@ -95,6 +102,7 @@ public class ReviewActivity extends AppCompatActivity {
 
         VolleySingleton.getInstance(this).addToRequestQueue(jsonObjectRequest);
 
+        //after review is submitted, going back to that bar's page
         if (barName.equals("The Old Broadway")){
             Intent obIntent = new Intent(getApplicationContext(), OldBroadway.class);
             startActivity(obIntent);
