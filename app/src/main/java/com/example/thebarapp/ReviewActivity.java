@@ -77,7 +77,7 @@ public class ReviewActivity extends AppCompatActivity {
             review.put(KEY_DRINK, drink);
             review.put(KEY_FOOD, food);
             review.put(KEY_ATMOSPHERE, atmosphere);
-            //review.put(KEY_COMMENT, commentIn);
+            review.put(KEY_COMMENT, commentIn);
         }
         catch (JSONException e) {
             //TODO lets make sure we dont send this code lmao
