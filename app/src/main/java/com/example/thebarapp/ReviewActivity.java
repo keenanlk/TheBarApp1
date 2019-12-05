@@ -71,17 +71,17 @@ public class ReviewActivity extends AppCompatActivity {
         //putting the review info into a json object to send to our database
         JSONObject review = new JSONObject();
 
-        Toast.makeText( ReviewActivity.this , "Made it this far", Toast.LENGTH_SHORT).show();
+
         try {
             review.put("Bar", barName);
-            review.put(KEY_DRINK, drink);
-            review.put(KEY_FOOD, food);
-            review.put(KEY_ATMOSPHERE, atmosphere);
-            review.put(KEY_COMMENT, commentIn);
+            review.put("Drinks", drink);
+            review.put("Food", food);
+            review.put("Atmosphere", atmosphere);
+            review.put("Comment", commentIn);
         }
         catch (JSONException e) {
             //TODO lets make sure we dont send this code lmao
-            Toast.makeText( ReviewActivity.this , "fucked up in jsonbuilding", Toast.LENGTH_SHORT).show();
+            Toast.makeText( ReviewActivity.this , "Error up in jsonbuilding", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -106,14 +106,17 @@ public class ReviewActivity extends AppCompatActivity {
         if (barName.equals("The Old Broadway")){
             Intent obIntent = new Intent(getApplicationContext(), OldBroadway.class);
             startActivity(obIntent);
+            finish();
         }
         else if(barName.equals("Herd and Horns")){
             Intent obIntent = new Intent(getApplicationContext(), HerdAndHorns.class);
             startActivity(obIntent);
+            finish();
         }
         else if(barName.equals("Sports Bar")){
             Intent obIntent = new Intent(getApplicationContext(), SportsBar.class);
             startActivity(obIntent);
+            finish();
         }
 
 
