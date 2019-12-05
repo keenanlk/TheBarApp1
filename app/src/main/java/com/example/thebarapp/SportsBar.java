@@ -43,6 +43,7 @@ public class SportsBar extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent startIntent = new Intent(getApplicationContext(), ReviewActivity.class);
+                startIntent.putExtra("barName", "Sports Bar");
                 startActivity(startIntent);
             }
         });
