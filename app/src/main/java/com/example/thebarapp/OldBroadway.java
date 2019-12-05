@@ -77,6 +77,7 @@ public class OldBroadway extends AppCompatActivity {
                 //This is hardcoded bar name
                 startIntent.putExtra("barName", "The Old Broadway");
                 startActivity(startIntent);
+                finish();
             }
         });
 

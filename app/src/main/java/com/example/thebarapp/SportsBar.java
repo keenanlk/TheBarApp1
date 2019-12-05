@@ -47,6 +47,7 @@ public class SportsBar extends AppCompatActivity {
                 Intent startIntent = new Intent(getApplicationContext(), ReviewActivity.class);
                 startIntent.putExtra("barName", "Sports Bar");
                 startActivity(startIntent);
+                finish();
             }
         });
 

@@ -52,6 +52,7 @@ public class HerdAndHorns extends AppCompatActivity {
                 Intent startIntent = new Intent(getApplicationContext(), ReviewActivity.class);
                 startIntent.putExtra("barName", "Herd and Horns");
                 startActivity(startIntent);
+                finish();
             }
         });
 
