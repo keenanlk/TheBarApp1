@@ -21,7 +21,7 @@
 # Running the Project
 1. Build the project by clicking build, then make project.
 2. After the project is finished building, Click the play button.
-3. Finished you can now use the App on either your virtual device or your Android device!
+3. Finished! You can now use the app on either your virtual device or your Android device!
 
 
 This project was created by Keenan Kaufman, Caitlyn Bachmeier, Devin Hasse, Taylor Schmidt, and Bego Muminovic
