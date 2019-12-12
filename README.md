@@ -30,6 +30,9 @@ Included in this project is a folder labeled DjangoBackend. This folder contains
 
 There is no setup required for the backend, however this code is provided so you can examine how the api is created
 
+
+# Created By
+
 This project was created by Keenan Kaufman, Caitlyn Bachmeier, Devin Hasse, Taylor Schmidt, and Bego Muminovic
 
 
