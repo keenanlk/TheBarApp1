@@ -24,6 +24,12 @@
 3. Finished! You can now use the app on either your virtual device or your Android device!
 
 
+# Backend
+
+Included in this project is a folder labeled DjangoBackend. This folder contains the Django REST Framework code for the backend. Currently it is deployed at http://ndsucsci415.herokuapp.com
+
+There is no setup required for the backend, however this code is provided so you can examine how the api is created
+
 This project was created by Keenan Kaufman, Caitlyn Bachmeier, Devin Hasse, Taylor Schmidt, and Bego Muminovic
 
 
