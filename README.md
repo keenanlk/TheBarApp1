@@ -30,6 +30,8 @@ Included in this project is a folder labeled DjangoBackend. This folder contains
 
 There is no setup required for the backend, however this code is provided so you can examine how the api is created
 
+An API Guide can be accessed here: https://app.swaggerhub.com/apis-docs/Test-NDSU/BarReview/1.0.0
+
 
 # Created By
 
